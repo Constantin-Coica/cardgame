@@ -1,13 +1,13 @@
-package org.example.classes;
+package com.card.game.classes;
 
-public class Card {
+ class Card {
     private String suit;
     private String symbol;
-    private int value;
+    protected int value;
 
 
 
-    public Card(String suit, String symbol, int value){
+    protected Card(String suit, String symbol, int value){
         this.suit = suit;
         this.symbol = symbol;
         this.value = value;
@@ -22,27 +22,28 @@ public class Card {
                 '}';
     }
 
-    public String getSuit() {
+    protected String getSuit() {
         return suit;
     }
 
-    public void setSuit(String suit) {
+    private void setSuit(String suit) {
         this.suit = suit;
     }
 
-    public String getSymbol() {
+    protected String getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(String symbol) {
+    private void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
-    public int getValue() {
+    protected int getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    private void setValue(int value) {
         this.value = value;
     }
+
 }

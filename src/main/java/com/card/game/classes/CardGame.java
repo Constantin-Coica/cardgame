@@ -1,12 +1,14 @@
-package org.example.classes;
+package com.card.game.classes;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class CardGame implements Comparable<Card>{
+public class CardGame{
     private List<Card> deckOfCards;
-    private String name;
+    protected String name;
     private String[] suits = {"♠","♥","♦","♣"};
 
 
@@ -46,7 +48,9 @@ public class CardGame implements Comparable<Card>{
     }
 
     public Card dealCard(){
-        return getDeck().get(getDeck().size()-1);
+        Card dealtCard = deckOfCards.get(getDeck().size()-1);
+        deckOfCards.remove(deckOfCards.size()-1);
+        return dealtCard;
     }
 
     public List<Card> shuffleDeck(){
@@ -54,9 +58,25 @@ public class CardGame implements Comparable<Card>{
         return deckOfCards;
     }
 
-
-    @Override
-    public int compareTo(Card o) {
-        return 0;
+    public void sortDeckInNumberOrder(){
+        List<Card> orderedCards = new ArrayList(deckOfCards.stream().sorted(Comparator.comparingInt(Card::getValue)).collect(Collectors.toList()));
+        deckOfCards = orderedCards;
     }
+
+    public void sortDeckIntoSuits(){
+        List<Card> orderedCards = new ArrayList<>();
+        sortDeckInNumberOrder();
+        for(int i =0; i<suits.length; i++){
+            for(int j = 0; j<deckOfCards.size(); j++){
+                if(suits[i].equals(deckOfCards.get(j).getSuit())){
+                    orderedCards.add(deckOfCards.get(j));
+                }
+            }
+        }
+        deckOfCards = orderedCards;
+    }
+
+
+
+
 }
