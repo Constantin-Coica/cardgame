@@ -7,7 +7,8 @@ import java.util.List;
 public class CardGame implements Comparable<Card>{
     private List<Card> deckOfCards;
     private String name;
-    private String[] suits = {"\u2660","\u2665","\u2666","\u2663"};
+    private String[] suits = {"♠","♥","♦","♣"};
+
 
     public CardGame(String name){
         this.name = name;
