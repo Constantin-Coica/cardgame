@@ -64,7 +64,8 @@ public class CardGame{
     }
 
     public void sortDeckIntoSuits(){
-        List<Card> orderedCards = new ArrayList<>();
+        Collections.sort(deckOfCards, new SortBySuits());
+        /*List<Card> orderedCards = new ArrayList<>();
         sortDeckInNumberOrder();
         for(int i =0; i<suits.length; i++){
             for(int j = 0; j<deckOfCards.size(); j++){
@@ -73,7 +74,7 @@ public class CardGame{
                 }
             }
         }
-        deckOfCards = orderedCards;
+        deckOfCards = orderedCards;*/
     }
 
 
